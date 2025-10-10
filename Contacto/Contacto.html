@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-sacale=1.0">
+    <link rel="stylesheet" type="text/css" href="Contacto.css">
+    <title>Contacto - Consultorio Odontológico DentaSalud</title>
+</head>
+
+<body>
+
+    <nav>
+        <ul>
+            <li><a href="../Principal/Main.html">Inicio</a></li>
+            <li><a href="../Servicios/Servicios.html">Servicios</a></li>
+            <li><a href="../Contacto/Contacto.html">Contacto</a></li>
+        </ul>
+    </nav>
+
+    <header>
+        <h1>Contáctenos</h1>
+        <p>Estamos aquí para atenderte</p>
+    </header>
+
+    <div class="container">
+        <!--Info Contacto-->
+        <div class="info-contacto">
+            <h3>Información de Contactos</h3>
+            <div class="info-item">
+                <strong>- Dirección:</strong>
+                Av. Sucre 1324, San Luis - Capital, Argentina
+            </div>
+            <div class="info-item">
+                <strong>- Teléfono:</strong>
+                2664-982750
+            </div>
+            <div class="info-item">
+                <strong>- Email:</strong>
+                dentasalud@gmail.com
+            </div>
+            <div class="info-item">
+                <strong>- Horario</strong>
+                Lunes a Viernes: 09:00 - 19:00 <br>
+                Sabados: 09:00 - 13:00
+            </div>
+        </div>
+
+        <div class="form-container">
+            <h2>Formulario de Contacto</h2>
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="nombre"> Nombre Completo<span class="required">*</span></label>
+                    <input type="text" id="nombre" name="nombre" maxlength="50">
+                    <div class="error-menssage" id="errorNombre"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="telefono">Teléfono<span class="required">*</span></sapn></label>
+                    <input type="text" id="telefono" name="telefon" maxlength="50">
+                    <div class="error-menssage" id="errorTelefono"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="motivo">Motivo de la Consulta<span class="required">*</span></label>
+                    <select id="motivo" name="motivo">
+                        <option value=" ">Seleccione una Opcion</option>
+                        <option value="consulta-general">Consulta General</option>
+                        <option value="urgencia">Urgencia</option>
+                        <option value="ortodoncia">Ortodoncia</option>
+                        <option value="estetica">Estetica</option>
+                        <option value="implantes">implantes</option>
+                        <option value="otro">Otro</option>
+                    </select>
+                    <div class="error-menssage" id="erroMotivo"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="mensaje">Mensaje</label>
+                    <textarea id="mensaje" name="mensaje" maxlength="500"></textarea>
+                    <div class="error-menssage" id="errorMensaje"></div>
+                </div>
+
+                <button type="submit">Enviar Consulta</button>
+            </form>
+        </div>
+
+        <!--Res-->
+        <div id="resultado"></div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Consultorio Odontológico DentaSalud - Todos los derechos reservados</p>
+    </footer>
+
+
+</body>
