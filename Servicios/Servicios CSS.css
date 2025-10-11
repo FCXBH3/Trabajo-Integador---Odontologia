@@ -1,0 +1,123 @@
+
+body{
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f8ff;
+    color: #2c3e50;
+}
+
+ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content:center;
+}
+
+li{
+    display:flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    width: 120px;
+    height: 45px;
+    padding: 5px;
+    font-size: 18px;
+}
+
+li a{
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+}
+
+li a:hover{
+    border-radius: 5px;
+    background-color: rgb(35, 109, 173);
+}
+
+#Div_Barra_Principal{
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    background-color: #2c7fb8;
+}
+
+#Div_Logo{
+    text-align: center;
+    background-color: #41b6e6;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    padding: 10px;
+    color: rgb(255, 254, 254);
+}
+
+h1{
+    padding: 0;
+    margin-top: 40px;
+    margin-bottom: 5px;
+}
+
+h3{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.Div_Informacion{
+    width: 49%;
+    margin-top: 16px;
+}
+            
+#Div_Contenedor_General{
+    background-color: rgb(255, 255, 255); 
+    border: 1px solid rgb(232, 232, 232); 
+    box-shadow: 0px 0px 1px 0px black; 
+    border-radius: 3px;
+    text-align: center;
+    color: rgb(0, 107, 195); 
+    font-size: 35px;
+}
+
+.Div_Contenedores{
+    background-color: rgb(255, 255, 255); 
+    border: 1px solid rgb(255, 255, 255); 
+    box-shadow: 0px 0px 1px 0px black; 
+    border-radius: 3px;
+    margin-bottom: 16px;
+    padding-left: 12px;
+    padding-right: 12px;
+}
+
+.H2_Azul{
+    color: rgb(0, 107, 195); 
+    font-size: 21px;
+    border-bottom: 2px solid rgb(0, 123, 224);
+    padding-bottom: 5px;
+}
+
+#H2_Azul_General{
+    color: rgb(0, 107, 195); 
+    font-size: 21px;
+    padding-bottom: 5px;
+}
+
+.P_Info{
+    color: black;
+    font-size: 14px;
+}
+
+#P_Info_general{
+    color: black;
+    font-size: 15px;
+    margin-left: 70px;margin-right: 70px;
+}
+
+#Contenedor_Urgencia{
+    background-color: rgb(255, 106, 106); 
+    border: 1px solid rgb(184, 0, 0); 
+    box-shadow: 0px 0px 1px 0px black; 
+    border-radius: 7px;
+    margin-bottom: 16px;
+    padding-left: 12px;
+    padding-right: 12px;
+    text-align: center;
+    font-size: 20px;
+}
