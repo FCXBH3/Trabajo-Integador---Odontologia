@@ -124,6 +124,7 @@ header p{
     border-radius: 50%;
     margin: 0 5px;
     cursor: pointer;
+    transition: 0.3s;
 }
 
 .indicador.active{

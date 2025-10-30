@@ -24,19 +24,19 @@
             <div class="container">
 
                 <div class="carrousel-container">
-                    <img src="../Imagenes/consultorio.webp" alt="Consultorio Moderno" class="carrousel-image active">
-                    <img src="../Imagenes/EquipoDental.webp" alt="Equipo Dental" class="carrousel-image">
-                    <img src="../Imagenes/instrumentadlDental.webp" alt="instrumental Dental" class="carrousel-image">
-                    <img src="../Imagenes/paciente-feliz.webp" alt="Paciente Feliz" class="carrousel-image">
+                    <img src="../Imagenes/consultorio.webp" alt="Consultorio Moderno" class="carrusel-image active">
+                    <img src="../Imagenes/EquipoDental.webp" alt="Equipo Dental" class="carrusel-image">
+                    <img src="../Imagenes/instrumentadlDental.webp" alt="instrumental Dental" class="carrusel-image">
+                    <img src="../Imagenes/paciente-feliz.webp" alt="Paciente Feliz" class="carrusel-image">
 
                     <button class="carrousel-btn.prev">‹</button>
                     <button class="carrousel-btn.next">›</button>
 
                     <div class="carrousel-indicardores">
-                        <span class="indicador active"></span>
-                        <span class="indicador "></span>
-                        <span class="indicador "></span>
-                        <span class="indicador "></span>
+                        <span class="indicador active" id="Indice_1"></span>
+                        <span class="indicador " id="Indice_2"></span>
+                        <span class="indicador " id="Indice_3"></span>
+                        <span class="indicador " id="Indice_4"></span>
                     </div>
                 </div>
 
@@ -67,5 +67,32 @@
             <footer>
                 <p>&copy; 2024 Consultorio Odontológico DentaSalud - Todos los derechos reservados</p>
             </footer>
+
+            <script>
+                document.getElementsByClassName("indicador")[0].addEventListener("click", Cambiar_Imagen);
+                document.getElementsByClassName("indicador")[1].addEventListener("click", Cambiar_Imagen);
+                document.getElementsByClassName("indicador")[2].addEventListener("click", Cambiar_Imagen);
+                document.getElementsByClassName("indicador")[3].addEventListener("click", Cambiar_Imagen);
+                function Cambiar_Imagen(){
+                    let Array_Indicador = document.getElementsByClassName("indicador");
+
+                    let Array_Imagenes = document.getElementsByClassName("carrusel-image");
+                    let Length_Indicadores = document.getElementsByClassName("indicador").length;
+
+                    for (i=0;i<=Length_Indicadores-1;i++){
+                        if (Array_Indicador[i].classList.contains("active")){
+                            Array_Indicador[i].classList.remove("active");
+                            Array_Imagenes[i].classList.remove("active");
+                        }
+                    }
+                    
+                    for (i=0;i<=Length_Indicadores;i++){
+                        if (event.target.id == Array_Indicador[i].id){
+                            event.target.classList.add("active");
+                            Array_Imagenes[i].classList.add("active");
+                        }
+                    }
+                }
+            </script>
     </body>
 </html>
