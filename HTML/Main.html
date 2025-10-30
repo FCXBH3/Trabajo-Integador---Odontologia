@@ -24,15 +24,20 @@
             <div class="container">
 
                 <div class="carrousel-container">
-                    <img src="../Imagenes/consultorio.webp" alt="Consultorio Moderno" class="carrusel-image active">
-                    <img src="../Imagenes/EquipoDental.webp" alt="Equipo Dental" class="carrusel-image">
-                    <img src="../Imagenes/instrumentadlDental.webp" alt="instrumental Dental" class="carrusel-image">
-                    <img src="../Imagenes/paciente-feliz.webp" alt="Paciente Feliz" class="carrusel-image">
+                    <div id="Div_Botones_Imagenes">
+                        <button class="carousel-btn prev" id="Boton_Prev">‹</button>
 
-                    <button class="carrousel-btn.prev">‹</button>
-                    <button class="carrousel-btn.next">›</button>
+                        <img src="../Imagenes/consultorio.webp" alt="Consultorio Moderno" class="carrusel-image active">
+                        <img src="../Imagenes/EquipoDental.webp" alt="Equipo Dental" class="carrusel-image">
+                        <img src="../Imagenes/instrumentadlDental.webp" alt="instrumental Dental" class="carrusel-image">
+                        <img src="../Imagenes/paciente-feliz.webp" alt="Paciente Feliz" class="carrusel-image">
+                        
+                        <button class="carousel-btn next" id="Boton_Next">›</button>
+                    </div>
 
-                    <div class="carrousel-indicardores">
+                    
+
+                    <div class="carrusel-indicadores">
                         <span class="indicador active" id="Indice_1"></span>
                         <span class="indicador " id="Indice_2"></span>
                         <span class="indicador " id="Indice_3"></span>
@@ -69,14 +74,20 @@
             </footer>
 
             <script>
-                document.getElementsByClassName("indicador")[0].addEventListener("click", Cambiar_Imagen);
-                document.getElementsByClassName("indicador")[1].addEventListener("click", Cambiar_Imagen);
-                document.getElementsByClassName("indicador")[2].addEventListener("click", Cambiar_Imagen);
-                document.getElementsByClassName("indicador")[3].addEventListener("click", Cambiar_Imagen);
-                function Cambiar_Imagen(){
-                    let Array_Indicador = document.getElementsByClassName("indicador");
+                document.getElementsByClassName("indicador")[0].addEventListener("click", Cambiar_Imagen_Botones);
+                document.getElementsByClassName("indicador")[1].addEventListener("click", Cambiar_Imagen_Botones);
+                document.getElementsByClassName("indicador")[2].addEventListener("click", Cambiar_Imagen_Botones);
+                document.getElementsByClassName("indicador")[3].addEventListener("click", Cambiar_Imagen_Botones);
 
+                document.getElementById("Boton_Prev").addEventListener("click", Cambiar_Imagen_Flecha);
+                document.getElementById("Boton_Next").addEventListener("click", Cambiar_Imagen_Flecha);
+
+                let Posicion = 0;
+
+                function Cambiar_Imagen_Botones(){
+                    let Array_Indicador = document.getElementsByClassName("indicador");
                     let Array_Imagenes = document.getElementsByClassName("carrusel-image");
+
                     let Length_Indicadores = document.getElementsByClassName("indicador").length;
 
                     for (i=0;i<=Length_Indicadores-1;i++){
@@ -90,8 +101,42 @@
                         if (event.target.id == Array_Indicador[i].id){
                             event.target.classList.add("active");
                             Array_Imagenes[i].classList.add("active");
+                            Posicion = i;
                         }
                     }
+                }
+
+                function Cambiar_Imagen_Flecha(){
+                    
+
+                    let Array_Indicador = document.getElementsByClassName("indicador");
+                    let Array_Imagenes = document.getElementsByClassName("carrusel-image");
+                    let Length_Indicadores = document.getElementsByClassName("indicador").length;
+
+                    for (i=0;i<=Length_Indicadores-1;i++){
+                        if (Array_Indicador[i].classList.contains("active")){
+                            Array_Indicador[i].classList.remove("active");
+                            Array_Imagenes[i].classList.remove("active");
+                        }
+                    }
+
+                    if(event.target.id == "Boton_Prev"){
+                        if(Posicion == 0){
+                            Posicion += 3;
+                        } else if (Posicion > 0){
+                            Posicion--;
+                        }
+                    } else if (event.target.id == "Boton_Next"){
+                        if (Posicion == 3){
+                            Posicion += -3;
+                        } else if (Posicion < 3){
+                            Posicion++;
+                        }
+                    }
+
+                    Array_Imagenes[Posicion].classList.add("active");
+                    Array_Indicador[Posicion].classList.add("active");
+
                 }
             </script>
     </body>

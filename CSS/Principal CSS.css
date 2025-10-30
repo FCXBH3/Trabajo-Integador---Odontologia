@@ -85,9 +85,6 @@ header p{
     display: block;
 }
 .carousel-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
     background-color: rgba(44, 127, 184, 0.8);
     color: white;
     border: none;
@@ -96,24 +93,32 @@ header p{
     cursor: pointer;
     border-radius: 5px;
     transition: background-color 0.3s;
+    height: 100px;
 }
 
-.carrusel-btn:hover{
+.carousel-btn:hover{
     background-color: rgba(26, 92, 138, 0.9);
 }
 
-.carrusel-btn.prev{
+.carousel-btn.prev{
     left: 10px;
 }
 
-.carrusel-btn.next{
+.carousel-btn.next{
     right: 10px;
 }
 
+#Div_Botones_Imagenes{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+}
+
 .carrusel-indicadores{
+    user-select: none;
     text-align: center;
     padding: 15px;
-    background-color: white;
 }
 
 .indicador{
@@ -132,7 +137,7 @@ header p{
 }
 
 /*seccion informacion*/
-.info-seccion{
+.info-section{
     background-color: white;
     padding: 40px;
     margin: 30px 0;
@@ -141,14 +146,14 @@ header p{
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
-.info-seccion h2{
+.info-section h2{
     color: #2c7fb8;
     font-size: 32px;
     margin-bottom: 20px;
     text-align: center;
 }
 
-.info-seccion p {
+.info-section p {
     line-height: 1.8;
     font-size: 18px;
     margin-bottom: 15px;
