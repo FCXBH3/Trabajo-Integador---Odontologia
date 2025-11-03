@@ -46,16 +46,16 @@
 
         <div class="form-container">
             <h2>Formulario de Contacto</h2>
-            <form id="contactForm">
+            <form id="contactForm" novalidate onsubmit="return Validar_Form()">
                 <div class="form-group">
                     <label for="nombre"> Nombre Completo<span class="required">*</span></label>
-                    <input type="text" id="nombre" name="nombre" maxlength="50">
+                    <input type="text" id="nombre" name="nombre">
                     <div class="error-menssage" id="errorNombre"></div>
                 </div>
 
                 <div class="form-group">
                     <label for="telefono">Teléfono<span class="required">*</span></sapn></label>
-                    <input type="text" id="telefono" name="telefon" maxlength="50">
+                    <input type="text" id="telefono" name="telefon">
                     <div class="error-menssage" id="errorTelefono"></div>
                 </div>
 
@@ -75,21 +75,52 @@
 
                 <div class="form-group">
                     <label for="mensaje">Mensaje</label>
-                    <textarea id="mensaje" name="mensaje" maxlength="500"></textarea>
+                    <textarea id="mensaje" name="mensaje"></textarea>
                     <div class="error-menssage" id="errorMensaje"></div>
                 </div>
 
-                <button type="submit">Enviar Consulta</button>
+                <input id="Boton_Submit" name="Boton_Submit" type="submit" value="Enviar Consulta">
             </form>
         </div>
-
         <!--Res-->
         <div id="resultado"></div>
     </div>
-
     <footer>
         <p>&copy; 2024 Consultorio Odontológico DentaSalud - Todos los derechos reservados</p>
     </footer>
+    <script>
+        function Validar_Form(){
+            let Nombre_Completo = document.forms["contactForm"]["nombre"].value;
+            let Telefono = document.forms["contactForm"]["telefon"].value;
+            let Motivo_Consulta = document.forms["contactForm"]["motivo"].value;
 
+            let Alerta = "";
 
+            console.log("FUNCIONA ESTA MRD? LA CONCHA DE TU MADRE: " + Nombre_Completo);
+
+            if (Nombre_Completo == ""){
+                Alerta += "Debes ingresar un Nombre.\n\n";
+            }else if (!Nombre_Completo.match(/^[a-zA-Z ]{10,30}|[a-zA-Z]{4,15}$/)){
+                Alerta += "El nombre no es Valido.\n\n";
+            }
+
+            if (Telefono == ""){
+                Alerta += "No has ingresado un numero Celular.\n\n";
+            } else if (!Telefono.match(/^[0-9]{9,16}$/)){
+                Alerta += "El numero celular no es Valido.\n\n";
+            }
+
+            if (Motivo_Consulta == " "){
+                Alerta += "No has Seleccionado un motivo.\n\n";
+            }
+
+            if(Alerta != ""){
+                alert(Alerta);
+                return false;
+            } else{
+                alert("Recibimos tu Mensaje.");
+                return true;
+            }
+        }
+    </script>
 </body>
