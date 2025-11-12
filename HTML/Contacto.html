@@ -90,6 +90,7 @@
         <p>&copy; 2024 Consultorio Odontológico DentaSalud - Todos los derechos reservados</p>
     </footer>
     <script>
+        let Booleano = false;
         function Validar_Form(){
             let Nombre_Completo = document.forms["contactForm"]["nombre"].value;
             let Telefono = document.forms["contactForm"]["telefon"].value;
@@ -117,7 +118,14 @@
                 alert(Alerta);
                 return false;
             } else{
-                document.getElementById("resultado").style.display = "block";
+                let Elemento_Div_Resultado = document.getElementById("resultado");
+                if (Booleano == true){
+                    for(i=1;i<=3;i++){
+                        Elemento_Div_Resultado.removeChild(Elemento_Div_Resultado.firstElementChild);
+                    }
+                    Booleano = false;
+                }
+                Elemento_Div_Resultado.style.display = "block";
                 let Nuevo_P = document.createElement("p");
                 let Nuevo_P2 = document.createElement("p");
                 let Nuevo_P3 = document.createElement("p");
@@ -127,9 +135,10 @@
                 Nuevo_P.appendChild(Nodo_Texto_Nombre);
                 Nuevo_P2.appendChild(Nodo_Texto_Telefono);
                 Nuevo_P3.appendChild(Nodo_Texto_Consulta);
-                document.getElementById("resultado").appendChild(Nuevo_P);
-                document.getElementById("resultado").appendChild(Nuevo_P2);
-                document.getElementById("resultado").appendChild(Nuevo_P3);
+                Elemento_Div_Resultado.appendChild(Nuevo_P);
+                Elemento_Div_Resultado.appendChild(Nuevo_P2);
+                Elemento_Div_Resultado.appendChild(Nuevo_P3);
+                Booleano = true;
                 alert("Recibimos tu Mensaje.");
                 return false;
             }
