@@ -83,7 +83,8 @@
             </form>
         </div>
         <!--Res-->
-        <div id="resultado"></div>
+        <div id="resultado">
+        </div>
     </div>
     <footer>
         <p>&copy; 2024 Consultorio Odontológico DentaSalud - Todos los derechos reservados</p>
@@ -116,8 +117,21 @@
                 alert(Alerta);
                 return false;
             } else{
+                document.getElementById("resultado").style.display = "block";
+                let Nuevo_P = document.createElement("p");
+                let Nuevo_P2 = document.createElement("p");
+                let Nuevo_P3 = document.createElement("p");
+                let Nodo_Texto_Nombre = document.createTextNode("Nombre Completo: " + Nombre_Completo);
+                let Nodo_Texto_Telefono = document.createTextNode("Telefono: " + Telefono);
+                let Nodo_Texto_Consulta = document.createTextNode("Motivo Consulta: " + Motivo_Consulta);
+                Nuevo_P.appendChild(Nodo_Texto_Nombre);
+                Nuevo_P2.appendChild(Nodo_Texto_Telefono);
+                Nuevo_P3.appendChild(Nodo_Texto_Consulta);
+                document.getElementById("resultado").appendChild(Nuevo_P);
+                document.getElementById("resultado").appendChild(Nuevo_P2);
+                document.getElementById("resultado").appendChild(Nuevo_P3);
                 alert("Recibimos tu Mensaje.");
-                return true;
+                return false;
             }
         }
     </script>
