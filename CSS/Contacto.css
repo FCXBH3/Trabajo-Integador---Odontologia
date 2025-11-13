@@ -112,14 +112,11 @@ textarea {
 }
 
 .error-message {
+    margin-left: 10px;
     color: #e74c3c;
     font-size: 14px;
     margin-top: 5px;
     display: none;
-}
-
-.error-message.show {
-    display: block;
 }
 
 input.error, textarea.error, select.error {
@@ -206,4 +203,16 @@ footer {
     text-align: center;
     padding: 20px;
     margin-top: 50px;
+}
+
+#Mensaje_Envio_Negativo{
+    display: none;
+    color: red;
+    text-align: center;
+}
+
+#Mensaje_Envio_Positivo{
+    display: none;
+    color: rgb(26, 122, 0);
+    text-align: center;
 }

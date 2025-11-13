@@ -50,13 +50,15 @@
                 <div class="form-group">
                     <label for="nombre"> Nombre Completo<span class="required">*</span></label>
                     <input type="text" id="nombre" name="nombre">
-                    <div class="error-menssage" id="errorNombre"></div>
+                    <p class="error-message">no has ingresado un Nombre.</p>
+                    <p class="error-message">El nombre no es Valido. Solo letras, entre 10 a 15 (10 a 30 letras con apellido)</p>
                 </div>
 
                 <div class="form-group">
                     <label for="telefono">Teléfono<span class="required">*</span></sapn></label>
                     <input type="text" id="telefono" name="telefon">
-                    <div class="error-menssage" id="errorTelefono"></div>
+                    <p class="error-message">no has ingresado un numero Celular.</p>
+                    <p class="error-message">El numero ingresado no es Valido. Ejemplo: 2664004232</p>
                 </div>
 
                 <div class="form-group">
@@ -70,7 +72,7 @@
                         <option value="implantes">implantes</option>
                         <option value="otro">Otro</option>
                     </select>
-                    <div class="error-menssage" id="erroMotivo"></div>
+                    <p class="error-message">no has seleccionado un Motivo.</p>
                 </div>
 
                 <div class="form-group">
@@ -80,6 +82,8 @@
                 </div>
 
                 <input id="Boton_Submit" name="Boton_Submit" type="submit" value="Enviar Consulta">
+                <div id="Mensaje_Envio_Negativo"><p>Faltan campos por llenar, o hay datos erroneos.</p></div>
+                <div id="Mensaje_Envio_Positivo"><p>Todo correcto, Recibimos su Mensaje.</p></div>
             </form>
         </div>
         <!--Res-->
@@ -91,33 +95,15 @@
     </footer>
     <script>
         let Booleano = false;
+        document.getElementById("nombre").addEventListener("keyup", Mensaje_Errores);
+        document.getElementById("telefono").addEventListener("keyup", Mensaje_Errores);
+        document.getElementById("motivo").addEventListener("click", Mensaje_Errores);
         function Validar_Form(){
             let Nombre_Completo = document.forms["contactForm"]["nombre"].value;
             let Telefono = document.forms["contactForm"]["telefon"].value;
             let Motivo_Consulta = document.forms["contactForm"]["motivo"].value;
 
-            let Alerta = "";
-
-            if (Nombre_Completo == ""){
-                Alerta += "Debes ingresar un Nombre.\n\n";
-            }else if (!Nombre_Completo.match(/^[a-zA-Z ]{10,30}|[a-zA-Z]{4,15}$/)){
-                Alerta += "El nombre no es Valido.\n\n";
-            }
-
-            if (Telefono == ""){
-                Alerta += "No has ingresado un numero Celular.\n\n";
-            } else if (!Telefono.match(/^[0-9]{9,16}$/)){
-                Alerta += "El numero celular no es Valido.\n\n";
-            }
-
-            if (Motivo_Consulta == " "){
-                Alerta += "No has Seleccionado un motivo.\n\n";
-            }
-
-            if(Alerta != ""){
-                alert(Alerta);
-                return false;
-            } else{
+            if (Nombre_Completo.match(/^[a-zA-Z ]{10,30}|[a-zA-Z]{4,15}$/) && Telefono.match(/^[0-9]{10,17}$/) && Motivo_Consulta != " ") {
                 let Elemento_Div_Resultado = document.getElementById("resultado");
                 if (Booleano == true){
                     for(i=1;i<=3;i++){
@@ -139,8 +125,53 @@
                 Elemento_Div_Resultado.appendChild(Nuevo_P2);
                 Elemento_Div_Resultado.appendChild(Nuevo_P3);
                 Booleano = true;
-                alert("Recibimos tu Mensaje.");
-                return false;
+                document.getElementById("Mensaje_Envio_Negativo").style.display = "none";
+                document.getElementById("Mensaje_Envio_Positivo").style.display = "block";
+            } else{
+                document.getElementById("Mensaje_Envio_Positivo").style.display = "none";
+                document.getElementById("Mensaje_Envio_Negativo").style.display = "block";
+            }
+            return false;
+        }
+
+        function Mensaje_Errores(){
+            let Nombre_Completo = document.forms["contactForm"]["nombre"].value;
+            let Telefono = document.forms["contactForm"]["telefon"].value;
+            let Motivo_Consulta = document.forms["contactForm"]["motivo"].value;
+            let Mensaje_Errores = document.getElementsByClassName("error-message");
+
+            if(event.target.id == "nombre"){
+                if(Nombre_Completo == ""){
+                    Mensaje_Errores[0].style.display = "block";
+                    Mensaje_Errores[1].style.display = "none";
+                } else if (!Nombre_Completo.match(/^[a-zA-Z ]{10,30}|[a-zA-Z]{4,15}$/)){
+                    Mensaje_Errores[1].style.display = "block";
+                    Mensaje_Errores[0].style.display = "none";
+                } else {
+                    Mensaje_Errores[0].style.display = "none";
+                    Mensaje_Errores[1].style.display = "none";
+                }
+            }
+
+            if(event.target.id == "telefono"){
+                if(Telefono == ""){
+                    Mensaje_Errores[2].style.display = "block";
+                    Mensaje_Errores[3].style.display = "none";
+                } else if (!Telefono.match(/^[0-9]{10,17}$/)){
+                    Mensaje_Errores[3].style.display = "block";
+                    Mensaje_Errores[2].style.display = "none";
+                } else{
+                    Mensaje_Errores[2].style.display = "none";
+                    Mensaje_Errores[3].style.display = "none";
+                }
+            }
+
+            if(event.target.id == "motivo"){
+                if(Motivo_Consulta == " "){
+                    Mensaje_Errores[4].style.display = "block";
+                }else{
+                    Mensaje_Errores[4].style.display = "none";
+                }
             }
         }
     </script>
